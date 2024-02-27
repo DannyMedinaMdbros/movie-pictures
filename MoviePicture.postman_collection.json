@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "5e78d541-3e0c-4453-9942-3363c10aa88a",
+		"name": "MoviePicture",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8653501"
+	},
+	"item": [
+		{
+			"name": "getAllPictures",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/movie-pictures",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movie-pictures"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPictureDetails",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/movie-pictures/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movie-pictures",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "votedMoviePictureUp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/movie-pictures/1/upvote",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movie-pictures",
+						"1",
+						"upvote"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "votedMoviePictureDown",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/movie-pictures/1/downvote",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movie-pictures",
+						"1",
+						"downvote"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllPicturesByReleaseYear",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/movie-pictures/released-year/2019",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movie-pictures",
+						"released-year",
+						"2019"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

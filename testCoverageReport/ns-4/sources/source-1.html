@@ -1,0 +1,159 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > MoviePictureServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.example.moviepicture.service</a>
+</div>
+
+<h1>Coverage Summary for Class: MoviePictureServiceImpl (com.example.moviepicture.service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MoviePictureServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (21/21)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package com.example.moviepicture.service;
+&nbsp;
+&nbsp;import com.example.moviepicture.models.entity.MoviePicture;
+&nbsp;import com.example.moviepicture.models.repository.MoviePictureRepository;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;
+&nbsp;import java.util.*;
+&nbsp;@Service
+&nbsp;public class MoviePictureServiceImpl implements MoviePictureService{
+&nbsp;    private MoviePictureRepository  moviePictureRepository;
+<b class="fc">&nbsp;    public MoviePictureServiceImpl(MoviePictureRepository moviePictureRepository) {</b>
+<b class="fc">&nbsp;        this.moviePictureRepository = moviePictureRepository;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public List&lt;MoviePicture&gt; findAll() {
+<b class="fc">&nbsp;        List&lt;MoviePicture&gt; moviePictures = moviePictureRepository.findAll();</b>
+<b class="fc">&nbsp;        moviePictures.sort(Comparator.comparingInt(MoviePicture::getFavoritesCounter).reversed());</b>
+<b class="fc">&nbsp;        return moviePictures;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public List&lt;MoviePicture&gt; findByReleasedYear(int releasedYear) {
+<b class="fc">&nbsp;        List&lt;MoviePicture&gt; moviePictures = moviePictureRepository.findByReleasedYear(releasedYear);</b>
+<b class="fc">&nbsp;        moviePictures.sort(Comparator.comparingInt(MoviePicture::getFavoritesCounter).reversed());</b>
+<b class="fc">&nbsp;        return moviePictures;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Optional&lt;MoviePicture&gt; votedMoviePictureUp(Long id) {
+<b class="fc">&nbsp;        Optional&lt;MoviePicture&gt; optionalMoviePicture = moviePictureRepository.findById(id);</b>
+<b class="fc">&nbsp;        if (optionalMoviePicture.isPresent()) {</b>
+<b class="fc">&nbsp;            MoviePicture moviePicture = optionalMoviePicture.get();</b>
+<b class="fc">&nbsp;            moviePicture.setFavoritesCounter(moviePicture.getFavoritesCounter() + 1);</b>
+<b class="fc">&nbsp;            moviePictureRepository.save(moviePicture);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return optionalMoviePicture;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Optional&lt;MoviePicture&gt; votedMoviePictureDown(Long id) {
+<b class="fc">&nbsp;        Optional&lt;MoviePicture&gt; optionalMoviePicture = moviePictureRepository.findById(id);</b>
+<b class="fc">&nbsp;        if (optionalMoviePicture.isPresent()) {</b>
+<b class="fc">&nbsp;            MoviePicture moviePicture = optionalMoviePicture.get();</b>
+<b class="fc">&nbsp;            moviePicture.setFavoritesCounter(moviePicture.getFavoritesCounter() - 1);</b>
+<b class="fc">&nbsp;            moviePictureRepository.save(moviePicture);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return optionalMoviePicture;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Optional&lt;MoviePicture&gt; getMoviePictureDetails(Long id) {
+<b class="fc">&nbsp;        return moviePictureRepository.findById(id);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-02-27 11:51</div>
+</div>
+</body>
+</html>
